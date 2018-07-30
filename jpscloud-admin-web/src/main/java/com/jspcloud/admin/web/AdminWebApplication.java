@@ -12,9 +12,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
-public class WebStartApplication {
+public class AdminWebApplication {
 	
 	public static void main(String[] args) {
-		SpringApplication.run(WebStartApplication.class, args);
+		SpringApplication.run(AdminWebApplication.class, args);
 	}
 }

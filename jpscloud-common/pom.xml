@@ -3,8 +3,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.jspcloud</groupId>
-    <artifactId>jspcloud</artifactId>
+    <groupId>com.jpscloud</groupId>
+    <artifactId>jpscloud</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
   <artifactId>jpscloud-common</artifactId>

@@ -4,7 +4,7 @@ server:
 ## Freemarker配置
 spring: 
   freemarker: 
-    template-loader-path: classpath:/ftl/
+    template-loader-path: classpath:/templates/
     cache: false
     charset: UTF-8
     check-template-location: true
@@ -12,4 +12,4 @@ spring:
     expose-request-attributes: true
     expose-session-attributes: true
     request-context-attribute: request
-    suffix: .ftl
+    suffix: .html
