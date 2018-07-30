@@ -1,8 +1,37 @@
 server:
   port: 8888
 
-## Freemarker配置
-spring: 
+spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+##==============数据库相关配置=========================##
+  datasource: 
+    url: jdbc:mysql://192.168.140.188:3306/basedata?useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 连接池的配置信息
+    # 初始化大小，最小，最大
+    maxActive: 20
+    initialSize: 5
+    minIdle: 5
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+    filters: stat
+##==============数据库相关配置=========================##
+
+##==============Freemarker配置=========================##
   freemarker: 
     template-loader-path: classpath:/templates/
     cache: false
@@ -11,5 +40,10 @@ spring:
     content-type: text/html
     expose-request-attributes: true
     expose-session-attributes: true
-    request-context-attribute: request
+    request-context-attribute: ctx
     suffix: .html
+##==============Freemarker配置=========================##  
+    
+    
+    
+    
