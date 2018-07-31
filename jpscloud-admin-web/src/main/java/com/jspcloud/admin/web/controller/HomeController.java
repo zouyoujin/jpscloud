@@ -27,8 +27,7 @@ import com.jpscloud.common.utils.VerifyCodeUtils;
 @RequestMapping(value = "")
 public class HomeController {
 
-	private final Logger log = LoggerFactory.getLogger(HomeController.class);
-
+	private final Logger log = LoggerFactory.getLogger(getClass());
 	/**
 	 * 网站首页入口
 	 * 
