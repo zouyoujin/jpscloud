@@ -11,6 +11,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 import com.jspcloud.admin.web.service.UserDetailsServiceImpl;
 
@@ -29,20 +33,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsServiceImpl userDetailService;
 
-	// @Autowired
-	// private OauthLogoutHandler oauthLogoutHandler;
+	@Autowired
+	private AuthenticationSuccessHandler authenticationSuccessHandler;
 
-//	@Autowired
-//	private AuthenticationSuccessHandler authenticationSuccessHandler;
-//
-//	@Autowired
-//	private AuthenticationFailureHandler authenticationFailureHandler;
-//
-//	@Autowired
-//	private LogoutHandler logoutHandler;
-//
-//	@Autowired
-//	private LogoutSuccessHandler logoutSuccessHandler;
+	@Autowired
+	private AuthenticationFailureHandler authenticationFailureHandler;
+
+	@Autowired
+	private LogoutHandler logoutHandler;
+
+	@Autowired
+	private LogoutSuccessHandler logoutSuccessHandler;
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -61,16 +62,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 
 		http.authorizeRequests().antMatchers("/user/token", "/getCode").permitAll()
-				.antMatchers("/swagger-resources","/swagger-ui.html", "/static/**")
-				.permitAll().antMatchers("/login").permitAll()
-				.anyRequest().authenticated();
-		http.formLogin().loginPage("/login").loginProcessingUrl("/user/login");
-//				.successHandler(authenticationSuccessHandler)
-//				.failureHandler(authenticationFailureHandler);
+				.antMatchers("/swagger-resources", "/swagger-ui.html", "/static/**").permitAll().antMatchers("/login")
+				.permitAll().anyRequest().authenticated();
+		http.formLogin().loginPage("/login").loginProcessingUrl("/user/login")
+				.successHandler(authenticationSuccessHandler).failureHandler(authenticationFailureHandler);
 
-		http.logout().logoutUrl("/user/logout").clearAuthentication(true);
-//				.logoutSuccessHandler(logoutSuccessHandler)
-//				.addLogoutHandler(logoutHandler);
+		http.logout().logoutUrl("/user/logout").clearAuthentication(true).logoutSuccessHandler(logoutSuccessHandler)
+				.addLogoutHandler(logoutHandler);
 
 		// 解决不允许显示在iframe的问题
 		http.headers().frameOptions().disable();

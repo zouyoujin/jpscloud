@@ -34,9 +34,15 @@ public class HomeController {
 	 * @return
 	 */
 	@GetMapping(value = "/")
-	public ModelAndView index(ModelAndView modelAndView) {
+	public ModelAndView indexPage(ModelAndView modelAndView) {
 		modelAndView.addObject("name", "jpscloud");
-		modelAndView.setViewName("index");
+		modelAndView.setViewName("/index");
+		return modelAndView;
+	}
+	
+	@GetMapping(value = "/main")
+	public ModelAndView mainPage(ModelAndView modelAndView) {
+		modelAndView.setViewName("/main/main");
 		return modelAndView;
 	}
 
@@ -46,8 +52,8 @@ public class HomeController {
 	 * @return
 	 */
 	@GetMapping(value = "/login")
-	public ModelAndView login(ModelAndView modelAndView) {
-		modelAndView.setViewName("login");
+	public ModelAndView loginPage(ModelAndView modelAndView) {
+		modelAndView.setViewName("/login");
 		return modelAndView;
 	}
 	
@@ -86,7 +92,7 @@ public class HomeController {
 //        if (msg != null) {
 //            model.addAttribute("message", msg);
 //        }
-    	return "redirect:/main";
+    	return "redirect:/main/main";
         //return "/login";
     }
 	
