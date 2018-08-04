@@ -28,21 +28,16 @@ import com.jpscloud.common.utils.VerifyCodeUtils;
 public class HomeController {
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
+
 	/**
 	 * 网站首页入口
 	 * 
 	 * @return
 	 */
 	@GetMapping(value = "/")
-	public ModelAndView indexPage(ModelAndView modelAndView) {
-		modelAndView.addObject("name", "jpscloud");
+	public ModelAndView indexPage(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/index");
-		return modelAndView;
-	}
-	
-	@GetMapping(value = "/main")
-	public ModelAndView mainPage(ModelAndView modelAndView) {
-		modelAndView.setViewName("/main/main");
 		return modelAndView;
 	}
 
@@ -51,53 +46,56 @@ public class HomeController {
 	 * 
 	 * @return
 	 */
-	@GetMapping(value = "/login")
-	public ModelAndView loginPage(ModelAndView modelAndView) {
-		modelAndView.setViewName("/login");
+	@GetMapping(value = "/user/loginpage")
+	public ModelAndView loginPage(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/index");
 		return modelAndView;
 	}
-	
+
 	/**
-     * 登录动作
-     *
-     * @param user
-     * @param model
-     * @param rememberMe
-     * @return
-     */
-    @PostMapping(value = "/login")
-    public String login(Users user, Model model, String rememberMe, HttpServletRequest request) {
-//        String codeMsg = (String) request.getAttribute("shiroLoginFailure");
-//        if ("code.error".equals(codeMsg)) {
-//            model.addAttribute("message", "验证码错误");
-//            return "/login";
-//        }
-//        UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername().trim(),
-//                user.getPassword());
-//        Subject subject = ShiroUtil.getSubject();
-//        String msg = null;
-//        try {
-//            subject.login(token);
-//            //subject.hasRole("admin");
-//            if (subject.isAuthenticated()) {
-//                return "redirect:/main";
-//            }
-//        } catch (UnknownAccountException e) {
-//            msg = "用户名/密码错误";
-//        } catch (IncorrectCredentialsException e) {
-//            msg = "用户名/密码错误";
-//        } catch (ExcessiveAttemptsException e) {
-//            msg = "登录失败多次，账户锁定10分钟";
-//        }
-//        if (msg != null) {
-//            model.addAttribute("message", msg);
-//        }
-    	return "redirect:/main/main";
-        //return "/login";
-    }
-	
+	 * 登录动作
+	 *
+	 * @param user
+	 * @param model
+	 * @param rememberMe
+	 * @return
+	 */
+	@PostMapping(value = "/login")
+	public String login(Users user, Model model, String rememberMe, HttpServletRequest request) {
+		// String codeMsg = (String) request.getAttribute("shiroLoginFailure");
+		// if ("code.error".equals(codeMsg)) {
+		// model.addAttribute("message", "验证码错误");
+		// return "/login";
+		// }
+		// UsernamePasswordToken token = new
+		// UsernamePasswordToken(user.getUsername().trim(),
+		// user.getPassword());
+		// Subject subject = ShiroUtil.getSubject();
+		// String msg = null;
+		// try {
+		// subject.login(token);
+		// //subject.hasRole("admin");
+		// if (subject.isAuthenticated()) {
+		// return "redirect:/main";
+		// }
+		// } catch (UnknownAccountException e) {
+		// msg = "用户名/密码错误";
+		// } catch (IncorrectCredentialsException e) {
+		// msg = "用户名/密码错误";
+		// } catch (ExcessiveAttemptsException e) {
+		// msg = "登录失败多次，账户锁定10分钟";
+		// }
+		// if (msg != null) {
+		// model.addAttribute("message", msg);
+		// }
+		return "redirect:/main/main";
+		// return "/login";
+	}
+
 	/**
 	 * 验证码生成功能
+	 * 
 	 * @param response
 	 * @param request
 	 */

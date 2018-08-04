@@ -22,7 +22,7 @@ function RouterConfig({ history, app }) {
             path="/"
             render={props => <BasicLayout {...props} />}
             authority={['admin', 'user']}
-            redirectPath={getQueryPath('/user/login', {
+            redirectPath={getQueryPath('/user/loginpage', {
               redirect: window.location.href,
             })}
           />

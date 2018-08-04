@@ -137,4 +137,12 @@ const proxy = {
   },
 };
 
-export default (noProxy ? {} : delay(proxy, 1000));
+export default (noProxy
+  ? {
+      'GET /api/(.*)': 'http://localhost:8888/api/',
+      'POST /api/(.*)': 'http://localhost:8888/api/',
+      // 'GET /user/(.*)': 'http://localhost:8888/user/',
+      'POST /user/login': 'http://localhost:8888/',
+      'GET /user/logout': 'http://localhost:8888/',
+    }
+  : delay(proxy, 1000));
