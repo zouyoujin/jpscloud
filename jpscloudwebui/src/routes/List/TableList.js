@@ -321,6 +321,15 @@ export default class TableList extends PureComponent {
       rule: { data },
       loading,
     } = this.props;
+
+    let tableData = data;
+    // 兼容处理下报错
+    if (tableData === undefined) {
+      tableData = {
+        list: [],
+        pagination: {},
+      };
+    }
     const { selectedRows, modalVisible } = this.state;
 
     const columns = [
@@ -420,7 +429,7 @@ export default class TableList extends PureComponent {
             <StandardTable
               selectedRows={selectedRows}
               loading={loading}
-              data={data}
+              data={tableData}
               columns={columns}
               onSelectRow={this.handleSelectRows}
               onChange={this.handleStandardTableChange}

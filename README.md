@@ -1,8 +1,11 @@
 # jpscloud
 
-java -Xms128m -Xmx512m -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=6666,suspend=n -jar jspcloud-admin-web.jar --spring.profiles.active=dev &
-java -Xms128m -Xmx512m -jar jspcloud-admin-web.jar &
-
+java -Xms128m -Xmx512m -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=6666,suspend=n -jar jpscloud-admin-web.jar --spring.profiles.active=dev &
+nohup java -Xms128m -Xmx512m -jar jpscloud-admin-web.jar >/dev/null 2>&1 &
+只输出错误信息到日志文件
+nohup ./program >/dev/null 2>log &
+什么信息也不要
+nohup ./program >/dev/null 2>&1 &
 参数说明：
 
 -XX:MetaspaceSize=128m （元空间默认大小）

@@ -14,7 +14,7 @@ import SiderMenu from '../components/SiderMenu';
 import NotFound from '../routes/Exception/404';
 import { getRoutes } from '../utils/utils';
 import Authorized from '../utils/Authorized';
-import { getMenuData } from '../common/menu';
+// import { getMenuData } from '../common/menu';
 import logo from '../assets/logo.svg';
 
 const { Content, Header, Footer } = Layout;
@@ -37,7 +37,7 @@ const getRedirect = item => {
     }
   }
 };
-getMenuData().forEach(getRedirect);
+// getMenuData().forEach(getRedirect);
 
 /**
  * 获取面包屑映射
@@ -99,10 +99,10 @@ class BasicLayout extends React.PureComponent {
   };
 
   getChildContext() {
-    const { location, routerData } = this.props;
+    const { location, routerData, menuList } = this.props;
     return {
       location,
-      breadcrumbNameMap: getBreadcrumbNameMap(getMenuData(), routerData),
+      breadcrumbNameMap: getBreadcrumbNameMap(menuList, routerData),
     };
   }
 
@@ -115,6 +115,10 @@ class BasicLayout extends React.PureComponent {
     const { dispatch } = this.props;
     dispatch({
       type: 'user/fetchCurrent',
+    });
+
+    dispatch({
+      type: 'menu/fetchMenus',
     });
   }
 
@@ -201,6 +205,7 @@ class BasicLayout extends React.PureComponent {
 
   render() {
     const {
+      menuList,
       currentUser,
       collapsed,
       fetchingNotices,
@@ -211,6 +216,8 @@ class BasicLayout extends React.PureComponent {
     } = this.props;
     const { isMobile: mb } = this.state;
     const baseRedirect = this.getBaseRedirect();
+
+    menuList.forEach(getRedirect);
     const layout = (
       <Layout>
         <SiderMenu
@@ -219,7 +226,7 @@ class BasicLayout extends React.PureComponent {
           // If you do not have the Authorized parameter
           // you will be forced to jump to the 403 interface without permission
           Authorized={Authorized}
-          menuData={getMenuData()}
+          menuData={menuList}
           collapsed={collapsed}
           location={location}
           isMobile={mb}
@@ -302,7 +309,8 @@ class BasicLayout extends React.PureComponent {
   }
 }
 
-export default connect(({ user, global = {}, loading }) => ({
+export default connect(({ user, menu, global = {}, loading }) => ({
+  menuList: menu.list,
   currentUser: user.currentUser,
   collapsed: global.collapsed,
   fetchingNotices: loading.effects['global/fetchNotices'],

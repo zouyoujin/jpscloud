@@ -141,8 +141,11 @@ export default (noProxy
   ? {
       'GET /api/(.*)': 'http://localhost:8888/api/',
       'POST /api/(.*)': 'http://localhost:8888/api/',
-      // 'GET /user/(.*)': 'http://localhost:8888/user/',
+      // 用户登录 注销页面映射
       'POST /user/login': 'http://localhost:8888/',
       'GET /user/logout': 'http://localhost:8888/',
+      // 菜单功能代理配置
+      'POST /menu/(.*)': 'http://localhost:8888/menu/',
+      'GET /menu/(.*)': 'http://localhost:8888/menu/',
     }
   : delay(proxy, 1000));

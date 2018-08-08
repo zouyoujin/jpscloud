@@ -74,6 +74,12 @@ export default function request(url, options) {
       if (newOptions.method === 'DELETE' || response.status === 204) {
         return response.text();
       }
+      // 前后台分离session失效不能跳转到login页面处理
+      if (response.redirected === true && 'user/loginpage'.indexOf(response.url) !== -1) {
+        const { dispatch } = store;
+        dispatch(routerRedux.push('/user/loginpage'));
+        return;
+      }
       return response.json();
     })
     .catch(e => {

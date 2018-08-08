@@ -2,7 +2,7 @@ import React, { createElement } from 'react';
 import { Spin } from 'antd';
 import pathToRegexp from 'path-to-regexp';
 import Loadable from 'react-loadable';
-import { getMenuData } from './menu';
+// import { getMenuData } from './menu';
 
 let routerDataCache;
 
@@ -72,7 +72,9 @@ function getFlatMenuData(menus) {
 export const getRouterData = app => {
   const routerConfig = {
     '/': {
-      component: dynamicWrapper(app, ['user', 'login'], () => import('../layouts/BasicLayout')),
+      component: dynamicWrapper(app, ['user', 'login', 'menu'], () =>
+        import('../layouts/BasicLayout')
+      ),
     },
     '/dashboard/analysis': {
       component: dynamicWrapper(app, ['chart'], () => import('../routes/Dashboard/Analysis')),
@@ -175,7 +177,10 @@ export const getRouterData = app => {
     // },
   };
   // Get name from ./menu.js or just set it in the router data.
-  const menuData = getFlatMenuData(getMenuData());
+  // const menuData = getFlatMenuData(getMenuData());
+
+  const menuList = app._models.find(({ namespace }) => namespace === 'menu').state.list; // eslint-disable-line
+  const menuData = getFlatMenuData(menuList);
 
   // Route configuration data
   // eg. {name,authority ...routerConfig }
