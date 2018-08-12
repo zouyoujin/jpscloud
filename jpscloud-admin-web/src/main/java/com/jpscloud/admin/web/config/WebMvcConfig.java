@@ -1,4 +1,4 @@
-package com.jspcloud.admin.web.config;
+package com.jpscloud.admin.web.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;

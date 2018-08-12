@@ -1,4 +1,4 @@
-package com.jspcloud.admin.web.controller;
+package com.jpscloud.admin.web.controller;
 
 import java.util.HashMap;
 import java.util.Map;

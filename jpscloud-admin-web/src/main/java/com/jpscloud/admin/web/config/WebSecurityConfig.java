@@ -1,4 +1,4 @@
-package com.jspcloud.admin.web.config;
+package com.jpscloud.admin.web.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +20,7 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 import org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 
-import com.jspcloud.admin.web.service.UserDetailsServiceImpl;
+import com.jpscloud.admin.web.service.UserDetailsServiceImpl;
 
 //import com.kitty.springcloud.oauth.server.security.UserDetailServiceImpl;
 
@@ -108,8 +108,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// http.csrf().disable().authorizeRequests().antMatchers("/**").permitAll();, "/api/**"
 
-		http.authorizeRequests().antMatchers("/user/loginpage", "/user/login", "/getCode", "/user/logout" )
-				.permitAll()
+		http.authorizeRequests().antMatchers("/user/loginpage", "/user/login", "/getCode", "/user/logout" ).permitAll()
+				.antMatchers("/**").permitAll()
 				// 其他地址的访问均需验证权限（需要登录）
 				.anyRequest().authenticated().and()
 				// 指定登录页面的请求路径

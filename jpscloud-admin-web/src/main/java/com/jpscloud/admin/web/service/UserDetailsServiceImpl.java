@@ -1,4 +1,4 @@
-package com.jspcloud.admin.web.service;
+package com.jpscloud.admin.web.service;
 
 import java.util.Collection;
 import java.util.HashSet;

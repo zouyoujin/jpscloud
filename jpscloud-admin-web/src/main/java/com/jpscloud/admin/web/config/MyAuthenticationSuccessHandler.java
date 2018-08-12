@@ -1,4 +1,4 @@
-package com.jspcloud.admin.web.config;
+package com.jpscloud.admin.web.config;
 
 import java.io.IOException;
 import java.io.PrintWriter;
