@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.jpscloud</groupId>
@@ -12,7 +11,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.3.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
@@ -28,12 +27,14 @@
 		<mybatisplus-spring.version>1.0.5</mybatisplus-spring.version>
 		<mybatis-spring-boot.version>1.3.1</mybatis-spring-boot.version>
 		<docker-maven-plugin.version>1.1.1</docker-maven-plugin.version>
+		<jasypt.version>2.1.0</jasypt.version>
 	</properties>
 
 	<modules>
 		<module>jpscloud-common</module>
 		<module>jpscloud-admin-web</module>
-	</modules>
+    <module>jpscloud-portal-web</module>
+  </modules>
 
 	<dependencyManagement>
 		<dependencies>

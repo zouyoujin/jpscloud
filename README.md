@@ -1,5 +1,7 @@
 # jpscloud
 
+java -cp D:\soft\apache-maven-3.3.9\repository\org\jasypt\jasypt\1.9.2\jasypt-1.9.2.jar org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI input="123456" password=root algorithm=PBEWithMD5AndDES
+
 java -Xms128m -Xmx512m -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=6666,suspend=n -jar jpscloud-admin-web.jar --spring.profiles.active=dev &
 nohup java -Xms128m -Xmx512m -jar jpscloud-admin-web.jar >/dev/null 2>&1 &
 只输出错误信息到日志文件

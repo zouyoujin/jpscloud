@@ -6,10 +6,10 @@ spring:
     active: ${SPRING_PROFILES_ACTIVE:dev}
 ##==============数据库相关配置=========================##
   datasource: 
-    #url: jdbc:mysql://192.168.140.188:3306/basedata?useSSL=false
-    url: jdbc:mysql://134.175.56.67:3306/basedata?useSSL=false
+    url: jdbc:mysql://192.168.140.188:3306/basedata?useSSL=false
+    #url: jdbc:mysql://134.175.56.67:3306/basedata?useSSL=false
     username: root
-    password: 123456
+    password: ENC(+INNS6vepbmyA/njhYTpyg==)
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     # 连接池的配置信息
@@ -31,7 +31,11 @@ spring:
     maxOpenPreparedStatements: 20
     filters: stat
 ##==============数据库相关配置=========================##
-
+#配置加密参数(可以理解为加密的salt)
+jasypt:
+  encryptor:
+    password: jpscloud   #(或者用123456)
+    
 ##==============Freemarker配置=========================##
   freemarker: 
     template-loader-path: classpath:/templates/
