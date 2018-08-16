@@ -4,6 +4,10 @@ import com.baomidou.mybatisplus.enums.IdType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
@@ -27,6 +31,9 @@ public class Users implements Serializable {
     /**
      * 登陆帐户
      */
+    // 名字不能为空，而且长度必须在2和30之间
+    @NotNull(message = "名称不能为空")
+    @Size(min=2, max=30, message = "名字长度必须在2和30之间")
     private String account;
     /**
      * 密码

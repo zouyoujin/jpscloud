@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ResourceUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -30,7 +31,7 @@ public class BillController {
 	/**
 	 * 导出查询报表
 	 */
-	@RequestMapping("/doExport")
+	@GetMapping(value = "/doExport")
 	public void doExport(HttpServletResponse response) {
 		XSSFWorkbook wb = null;
 		String fileName = "票据报表";
