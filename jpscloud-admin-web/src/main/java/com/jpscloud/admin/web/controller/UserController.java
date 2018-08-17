@@ -1,5 +1,7 @@
 package com.jpscloud.admin.web.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jpscloud.admin.web.service.UsersService;
 import com.jpscloud.common.entity.Users;
+import com.jpscloud.common.utils.JsonUtils;
 
 @RestController
 @RequestMapping(value = "/user")
@@ -27,6 +30,10 @@ public class UserController {
 	public String test() {
 		Users user = usersService.selectById(1L);
 		log.info("user = " + user);
+		List<Users> list = usersService.getAllUser();
+		log.info(JsonUtils.toJson(list));
+		list = usersService.getAllUserFromSaveDB();
+		log.info(JsonUtils.toJson(list));
 		return "hello spring boot.";
 	}
 

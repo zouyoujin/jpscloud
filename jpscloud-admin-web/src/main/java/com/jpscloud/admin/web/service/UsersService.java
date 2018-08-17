@@ -1,5 +1,7 @@
 package com.jpscloud.admin.web.service;
 
+import java.util.List;
+
 import com.baomidou.mybatisplus.service.IService;
 import com.jpscloud.common.entity.Users;
 
@@ -13,4 +15,7 @@ import com.jpscloud.common.entity.Users;
  */
 public interface UsersService extends IService<Users> {
 
+	public List<Users> getAllUser();
+	
+	public List<Users> getAllUserFromSaveDB();
 }

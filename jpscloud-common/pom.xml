@@ -14,13 +14,27 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
+		<!-- mybatisplus与springboot整合 -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatisplus-spring-boot-starter</artifactId>
+			<version>${mybatisplus-spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+			<version>${druid.version}</version>
+		</dependency>
+		<!-- springboot整合mybatis（核心就这一个） -->
+		<!-- 注意顺序，这个一定要放在最下面 -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>${mybatis-spring-boot.version}</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
-		<!-- <dependency>
-		    <groupId>org.codehaus.groovy</groupId>
-		    <artifactId>groovy-all</artifactId>
-		    <version>3.0.0-alpha-3</version>
-		    <type>pom</type>
-		</dependency> -->
+		<!-- <dependency> <groupId>org.codehaus.groovy</groupId> <artifactId>groovy-all</artifactId> 
+			<version>3.0.0-alpha-3</version> <type>pom</type> </dependency> -->
 		<!-- https://mvnrepository.com/artifact/com.googlecode.aviator/aviator -->
 		<dependency>
 			<groupId>com.googlecode.aviator</groupId>

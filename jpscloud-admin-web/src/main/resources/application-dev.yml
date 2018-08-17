@@ -1,0 +1,92 @@
+server:
+  port: 8888
+##==============数据库相关配置=========================##
+
+##==============mybatis-plus配置=========================##  
+mybatis-plus:
+  # 配置扫描xml
+  mapper-locations: classpath*:mapper/**/*.xml
+  # 实体扫描，多个package用逗号或者分号分隔
+  type-aliases-package: com.jpscloud.admin.web.entity,com.jpscloud.common.entity
+  #typeEnumsPackage: com.jpscloud.admin.web.entity.enums,com.jpscloud.common.entity.enums
+  global-config:
+    # 逻辑删除配置
+    logic-delete-value: 0
+    logic-not-delete-value: 1
+    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+##==============mybatis-plus配置=========================##  
+
+spring:
+  aop:
+    proxy-target-class: true
+    auto: true
+  datasource: 
+    basedata: 
+      url: jdbc:mysql://192.168.140.188:3306/basedata?useSSL=false
+      #url: jdbc:mysql://134.175.56.67:3306/basedata?useSSL=false
+      username: root
+      password: ENC(+INNS6vepbmyA/njhYTpyg==)
+      driver-class-name: com.mysql.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      # 连接池的配置信息
+      # 初始化大小，最小，最大
+      maxActive: 20
+      initialSize: 5
+      minIdle: 5
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      # 打开PSCache，并且指定每个连接上PSCache的大小
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+      filters: stat
+    jpscloudadmin: 
+      url: jdbc:mysql://192.168.140.188:3306/jpscloudadmin?useSSL=false
+      #url: jdbc:mysql://134.175.56.67:3306/basedata?useSSL=false
+      username: root
+      password: ENC(+INNS6vepbmyA/njhYTpyg==)
+      driver-class-name: com.mysql.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource
+      # 连接池的配置信息
+      # 初始化大小，最小，最大
+      maxActive: 20
+      initialSize: 5
+      minIdle: 5
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      # 打开PSCache，并且指定每个连接上PSCache的大小
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+      filters: stat
+##==============数据库相关配置=========================##
+    
+##==============Freemarker配置=========================##
+  freemarker: 
+    template-loader-path: classpath:/templates/
+    cache: false
+    charset: UTF-8
+    check-template-location: true
+    content-type: text/html
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: ctx
+    suffix: .html
+##==============Freemarker配置=========================##  
+
+#配置加密参数(可以理解为加密的salt)
+jasypt:
+  encryptor:
+    password: jpscloud   #(或者用123456)
