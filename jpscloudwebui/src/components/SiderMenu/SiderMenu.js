@@ -23,44 +23,27 @@ const getIcon = icon => {
   return icon;
 };
 
-/**
- * Recursively flatten the data
- * [{path:string},{path:string}] => [path,path2]
- * @param  menu
- */
-export const getFlatMenuKeys = menu =>
-  menu.reduce((keys, item) => {
-    keys.push(item.path);
-    if (item.children) {
-      return keys.concat(getFlatMenuKeys(item.children));
-    }
-    return keys;
-  }, []);
-
-/**
- * Find all matched menu keys based on paths
- * @param  flatMenuKeys: [/abc, /abc/:id, /abc/:id/info]
- * @param  paths: [/abc, /abc/11, /abc/11/info]
- */
-export const getMenuMatchKeys = (flatMenuKeys, paths) =>
-  paths.reduce(
-    (matchKeys, path) =>
-      matchKeys.concat(flatMenuKeys.filter(item => pathToRegexp(item).test(path))),
-    []
-  );
+export const getMeunMatcheys = (flatMenuKeys, path) => {
+  return flatMenuKeys.filter(item => {
+    return pathToRegexp(item).test(path);
+  });
+};
 
 export default class SiderMenu extends PureComponent {
   constructor(props) {
     super(props);
-    this.flatMenuKeys = getFlatMenuKeys(props.menuData);
+    this.flatMenuKeys = this.getFlatMenuKeys(props.menuData);
+    this.menus = props.menuData;
     this.state = {
       openKeys: this.getDefaultCollapsedSubMenus(props),
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    const { location } = this.props;
-    if (nextProps.location.pathname !== location.pathname) {
+    if ('menuData' in nextProps) {
+      const { menuData = [] } = nextProps;
+      this.flatMenuKeys = this.getFlatMenuKeys(menuData);
+      this.menus = menuData;
       this.setState({
         openKeys: this.getDefaultCollapsedSubMenus(nextProps),
       });
@@ -77,7 +60,27 @@ export default class SiderMenu extends PureComponent {
       location: { pathname },
     } =
       props || this.props;
-    return getMenuMatchKeys(this.flatMenuKeys, urlToList(pathname));
+    return urlToList(pathname)
+      .map(item => {
+        return getMeunMatcheys(this.flatMenuKeys, item)[0];
+      })
+      .filter(item => item);
+  }
+
+  /**
+   * Recursively flatten the data
+   * [{path:string},{path:string}] => {path,path2}
+   * @param  menus
+   */
+  getFlatMenuKeys(menus) {
+    let keys = [];
+    menus.forEach(item => {
+      if (item.children) {
+        keys = keys.concat(this.getFlatMenuKeys(item.children));
+      }
+      keys.push(item.path);
+    });
+    return keys;
   }
 
   /**
@@ -173,7 +176,7 @@ export default class SiderMenu extends PureComponent {
     const {
       location: { pathname },
     } = this.props;
-    return getMenuMatchKeys(this.flatMenuKeys, urlToList(pathname));
+    return urlToList(pathname).map(itemPath => getMeunMatcheys(this.flatMenuKeys, itemPath).pop());
   };
 
   // conversion Path
@@ -197,8 +200,7 @@ export default class SiderMenu extends PureComponent {
   };
 
   isMainMenu = key => {
-    const { menuData } = this.props;
-    return menuData.some(item => key && (item.key === key || item.path === key));
+    return this.menus.some(item => key && (item.key === key || item.path === key));
   };
 
   handleOpenChange = openKeys => {
@@ -210,7 +212,7 @@ export default class SiderMenu extends PureComponent {
   };
 
   render() {
-    const { logo, menuData, collapsed, onCollapse } = this.props;
+    const { logo, collapsed, onCollapse } = this.props;
     const { openKeys } = this.state;
     // Don't show popup menu when it is been collapsed
     const menuProps = collapsed
@@ -248,7 +250,7 @@ export default class SiderMenu extends PureComponent {
           selectedKeys={selectedKeys}
           style={{ padding: '16px 0', width: '100%' }}
         >
-          {this.getNavMenuItems(menuData)}
+          {this.getNavMenuItems(this.menus)}
         </Menu>
       </Sider>
     );

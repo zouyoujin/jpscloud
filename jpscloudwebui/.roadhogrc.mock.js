@@ -49,6 +49,44 @@ const proxy = {
       address: 'Sidney No. 1 Lake Park',
     },
   ],
+  'GET /menu/getMenusByUserId': {
+    status: 0,
+    message: 'OK',
+    data: [
+      {
+        id: 1,
+        name: 'dashboard',
+        icon: 'dashboard',
+        path: '/dashboard',
+        children: [
+          { id: 2, parentId: 1, name: '分析页', path: '/dashboard/analysis' },
+          { id: 3, parentId: 1, name: '监控页', path: '/dashboard/monitor' },
+          { id: 4, parentId: 1, name: '工作台', path: '/dashboard/workplace' },
+        ],
+      },
+      {
+        id: 5,
+        name: '表单页',
+        icon: 'form',
+        path: '/form',
+        children: [
+          { id: 6, parentId: 5, name: '基础表单', path: '/form/basic-form' },
+          { id: 7, parentId: 5, name: '分步表单', path: '/form/step-form' },
+          { id: 8, parentId: 5, name: '高级表单', path: '/form/advanced-form' },
+        ],
+      },
+      {
+        id: 9,
+        name: '用户管理',
+        icon: 'user',
+        path: '/user',
+        children: [
+          { id: 10, parentId: 9, name: '用户列表', path: '/user/basic-form1' },
+          { id: 11, parentId: 9, name: '高级表单', path: '/user/advanced-form1' },
+        ],
+      },
+    ],
+  },
   'GET /api/project/notice': getNotice,
   'GET /api/activities': getActivities,
   'GET /api/rule': getRule,

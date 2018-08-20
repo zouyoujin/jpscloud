@@ -37,4 +37,9 @@ public class MocklUIController {
 		return result;
 	}
 	
+	@GetMapping(value = "/tags")
+	public Map<String,String> tags() {
+		Map<String,String> result = new HashMap<>();
+		return result;
+	}
 }

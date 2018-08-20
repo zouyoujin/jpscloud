@@ -37,7 +37,9 @@ const getRedirect = item => {
     }
   }
 };
-// getMenuData().forEach(getRedirect);
+
+// const menuList = getMenuData();
+// menuList.forEach(getRedirect);
 
 /**
  * 获取面包屑映射
@@ -103,6 +105,7 @@ class BasicLayout extends React.PureComponent {
     return {
       location,
       breadcrumbNameMap: getBreadcrumbNameMap(menuList, routerData),
+      // breadcrumbNameMap: getBreadcrumbNameMap(getMenuData(), routerData),
     };
   }
 
@@ -227,6 +230,7 @@ class BasicLayout extends React.PureComponent {
           // you will be forced to jump to the 403 interface without permission
           Authorized={Authorized}
           menuData={menuList}
+          // menuData={getMenuData()}
           collapsed={collapsed}
           location={location}
           isMobile={mb}
