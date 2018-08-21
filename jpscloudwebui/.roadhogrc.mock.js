@@ -79,10 +79,10 @@ const proxy = {
         id: 9,
         name: '用户管理',
         icon: 'user',
-        path: '/user',
+        path: '/usermanager',
         children: [
-          { id: 10, parentId: 9, name: '用户列表', path: '/user/basic-form1' },
-          { id: 11, parentId: 9, name: '高级表单', path: '/user/advanced-form1' },
+          { id: 10, parentId: 9, name: '用户列表', path: '/usermanager/userlist' },
+          { id: 11, parentId: 9, name: '角色列表', path: '/usermanager/rolelist' },
         ],
       },
     ],
