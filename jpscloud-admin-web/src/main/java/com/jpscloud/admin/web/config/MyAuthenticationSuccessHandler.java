@@ -20,7 +20,7 @@ import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.util.StringUtils;
 
 import com.jpscloud.common.utils.JsonUtils;
-import com.jpscloud.common.utils.ResponseService;
+import com.jpscloud.common.vo.ResponseService;
 
 public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 

@@ -11,11 +11,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.jpscloud.admin.web.service.UsersService;
 import com.jpscloud.common.entity.Users;
 import com.jpscloud.common.utils.JsonUtils;
+import com.jpscloud.common.vo.PageList;
+import com.jpscloud.common.vo.ResponseService;
 
 @RestController
 @RequestMapping(value = "/user")
@@ -25,6 +29,20 @@ public class UserController {
 
 	@Autowired
 	private UsersService usersService;
+
+	/**
+	 * 用户分页列表展示
+	 * 
+	 * @return
+	 */
+	@GetMapping(value = "/getUsersPage")
+	public ResponseService<PageList<Users>> getUsersPage(@RequestParam(defaultValue = "1") int current,
+			@RequestParam(defaultValue = "20") int pageSize) {
+		ResponseService<PageList<Users>> response = new ResponseService<PageList<Users>>();
+		Page<Users> page = new Page<>(current, pageSize);
+		response.setData(usersService.getUserPage(page));
+		return response;
+	}
 
 	@GetMapping(value = "/test")
 	public String test() {

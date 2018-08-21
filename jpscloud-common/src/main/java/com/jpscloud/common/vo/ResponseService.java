@@ -1,4 +1,4 @@
-package com.jpscloud.common.utils;
+package com.jpscloud.common.vo;
 
 /**
  * 

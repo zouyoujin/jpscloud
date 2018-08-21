@@ -13,7 +13,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 
 import com.jpscloud.common.utils.JsonUtils;
-import com.jpscloud.common.utils.ResponseService;
+import com.jpscloud.common.vo.ResponseService;
 
 /**
  * 

@@ -27,7 +27,7 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jpscloud.common.utils.JsonUtils;
-import com.jpscloud.common.utils.ResponseService;
+import com.jpscloud.common.vo.ResponseService;
 
 /**
  * 

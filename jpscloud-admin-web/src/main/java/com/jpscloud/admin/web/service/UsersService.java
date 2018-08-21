@@ -2,8 +2,10 @@ package com.jpscloud.admin.web.service;
 
 import java.util.List;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
 import com.jpscloud.common.entity.Users;
+import com.jpscloud.common.vo.PageList;
 
 /**
  * <p>
@@ -15,7 +17,9 @@ import com.jpscloud.common.entity.Users;
  */
 public interface UsersService extends IService<Users> {
 
+	public PageList<Users> getUserPage(Page<Users> page);
+
 	public List<Users> getAllUser();
-	
+
 	public List<Users> getAllUserFromSaveDB();
 }

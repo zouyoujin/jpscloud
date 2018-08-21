@@ -10,7 +10,7 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
 import com.jpscloud.common.utils.JsonUtils;
-import com.jpscloud.common.utils.ResponseService;
+import com.jpscloud.common.vo.ResponseService;
 
 public class CustomAccessDeineHandler implements AccessDeniedHandler {
 
