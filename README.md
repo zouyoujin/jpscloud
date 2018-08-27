@@ -34,6 +34,46 @@ nohup ./program >/dev/null 2>&1 &
 
 JDK 8开始把类的元数据放到本地化的堆内存(native heap)中，这一块区域就叫Metaspace，中文名叫元空间。
 
+docker run -d -p 8080:8080 -p 50000:50000 -v jenkins_home:/home/jenkins_home jenkins/jenkins
+
+docker run \
+  -u root \
+  --rm \
+  -d \
+  -p 8080:8080 \
+  -v jenkins-data:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /home/jenkins_home:/home \
+  jenkins/jenkins
+  
+  311ed1c140234e278d4107eaf13a5c15
+  
+  账号:root 
+  密码:123456
+  
+  docker run \
+  -u root \
+  --rm \
+  -d \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  -v jenkins-data:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  jenkinsci/blueocean
+  
+  
+  docker run -d -it --name jenkins-tutorials --restart -u root -p 8080:8080 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v /root/jenkins:/home jenkinsci/blueocean
+  
+  
+启动服务
+service docker start
+使用docker info查看
+docker info
+
+然后重启docker
+systemctl daemon-reload
+systemctl restart docker.service
+ 
 -d 是让容器后台运行
 -p 是将容器内的端口映射到 docker 所在系统的端口
 -t 是打开一个伪终端，以便后续可以进入查看控制台 log
