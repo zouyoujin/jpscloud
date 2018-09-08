@@ -72,7 +72,7 @@ layui.define(['layer', 'laytpl', 'form', 'element', 'upload', 'util'], function(
           if(res.status === 0) {
             success && success(res);
           } else {
-            layer.msg(res.msg || res.code, {shift: 6});
+            layer.msg(res.message || res.code, {shift: 6});
             options.error && options.error();
           }
         }, error: function(e){
@@ -558,7 +558,7 @@ layui.define(['layer', 'laytpl', 'form', 'element', 'upload', 'util'], function(
         }
       };
       if(res.status == 0){
-        button.attr('alert') ? layer.alert(res.msg, {
+        button.attr('alert') ? layer.alert(res.message, {
           icon: 1,
           time: 10*1000,
           end: end

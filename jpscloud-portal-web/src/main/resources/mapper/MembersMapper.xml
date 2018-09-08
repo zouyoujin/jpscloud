@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jpscloud.portal.web.mapper.MembersMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jpscloud.portal.web.entity.Members">
+        <id column="id" property="id" />
+        <result column="account" property="account" />
+        <result column="password" property="password" />
+        <result column="type" property="type" />
+        <result column="username" property="username" />
+        <result column="phone" property="phone" />
+        <result column="address" property="address" />
+        <result column="email" property="email" />
+        <result column="intentional_style" property="intentionalStyle" />
+        <result column="card_no" property="cardNo" />
+    </resultMap>
+
+</mapper>

@@ -6,8 +6,8 @@ spring:
     active: ${SPRING_PROFILES_ACTIVE:dev}
 ##==============数据库相关配置=========================##
   datasource: 
-    #url: jdbc:mysql://192.168.140.188:3306/basedata?useSSL=false
-    url: jdbc:mysql://134.175.56.67:3306/basedata?useSSL=false
+    url: jdbc:mysql://192.168.140.188:3306/basedata?useSSL=false
+    #url: jdbc:mysql://134.175.56.67:3306/basedata?useSSL=false
     username: root
     password: ENC(+INNS6vepbmyA/njhYTpyg==)
     driver-class-name: com.mysql.jdbc.Driver

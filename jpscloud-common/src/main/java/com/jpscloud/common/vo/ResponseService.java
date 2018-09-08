@@ -17,6 +17,9 @@ public class ResponseService<T> {
 
 	private T data;
 
+	// 后台请求处理跳转页面
+	private String action;
+
 	public ResponseService() {
 	}
 
@@ -54,4 +57,12 @@ public class ResponseService<T> {
 		this.data = data;
 	}
 
+	public String getAction() {
+		return action;
+	}
+
+	public void setAction(String action) {
+		this.action = action;
+	}
+	
 }

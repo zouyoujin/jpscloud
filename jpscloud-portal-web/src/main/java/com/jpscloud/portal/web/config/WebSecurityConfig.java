@@ -35,14 +35,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// http.csrf().disable().authorizeRequests().antMatchers("/**").permitAll();,
 		// "/api/**"
 
-		http.authorizeRequests().antMatchers("/user/loginpage", "/user/login", "/getCode", "/user/logout").permitAll()
+		http.authorizeRequests().antMatchers("/user/login", "/user/dologin", "/getcode", "/user/logout").permitAll()
 				.antMatchers("/**").permitAll()
 				// 其他地址的访问均需验证权限（需要登录）
 				.anyRequest().authenticated().and()
 				// 指定登录页面的请求路径
-				.formLogin().loginPage("/user/loginpage")
+				.formLogin().loginPage("/user/login")
 				// 登陆处理路径
-				.loginProcessingUrl("/user/login").permitAll().and()
+				.loginProcessingUrl("/user/dologin").permitAll().and()
 				// 关闭csrf
 				.csrf().disable();
 	}

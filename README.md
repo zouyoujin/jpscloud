@@ -73,7 +73,8 @@ docker info
 然后重启docker
 systemctl daemon-reload
 systemctl restart docker.service
- 
+设置开机启动
+systemctl enable docker
 -d 是让容器后台运行
 -p 是将容器内的端口映射到 docker 所在系统的端口
 -t 是打开一个伪终端，以便后续可以进入查看控制台 log

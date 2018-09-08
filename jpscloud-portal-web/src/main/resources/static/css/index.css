@@ -1,0 +1,133 @@
+.h-top {
+	width: 100%;
+	width: expression(document.body.clientWidth <= 1200 ? "1200" : "auto");
+	min-width: 1200px;
+	height: 33px;
+	background-color: #f2f2f2;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.top {
+	width: 1200px;
+	margin: 0 auto;
+	height: 33px;
+}
+
+.welcome {
+	line-height: 33px;
+	color: #666;
+	float: left;
+}
+
+.top_one {
+	float: right;
+	width: 600px;
+	text-align: right;
+	line-height: 33px;
+	color: #666;
+}
+
+.t_dl a {
+	color: #0066ff;
+}
+
+.t_zc a {
+	color: #ff3300;
+}
+
+.top_two {
+	float: right;
+	margin-left: 12px;
+	width: 150px;
+}
+
+.top_two .userinfo {
+	width: 125px;
+}
+
+.top_two span {
+	line-height: 33px;
+	float: left;
+	display: block;
+	width: 72px;
+	text-align: center;
+}
+
+.top_two span img {
+	padding-left: 4px;
+	padding-right: 4px
+}
+
+span.t_wk .wk_box {
+	padding-left: 4px !important;
+	background: #fff;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+
+.wk_list {
+	border: solid #ccc 1px;
+	width: 170px;
+	line-height: 24px;
+	position: absolute;
+	top: 30px;
+	right: -15px;
+	z-index: 9998;
+	background: #FFF;
+	text-align: left;
+	padding: 10px;
+	display: none;
+}
+
+.subnav_border {
+	display: none;
+	position: absolute;
+	left: 240px;
+	top: 0px;
+	background: #ffffff;
+	z-index: 999;
+}
+
+.subnav_1 {
+	position: relative;
+	padding-left: 20px;
+	width: 646px;
+	height: 478px;
+	overflow: hidden;
+	padding-bottom: 20px;
+	border: solid 1px #ee1e1e;
+	border-left: none;
+}
+
+.subnav_lc {
+	float: left;
+	width: 425px;
+}
+
+.subnavprovider {
+	width: 220px;
+	float: right;
+}
+
+.subnav_1_top {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 3px;
+	width: 100%;
+}
+
+.subnav_1_bottom {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	height: 3px;
+	width: 100%;
+}
+
+
+.validatecode{
+	margin-top: -4px;
+    width: 100px;
+    height: 30px;
+}
