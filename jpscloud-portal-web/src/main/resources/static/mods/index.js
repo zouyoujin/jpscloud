@@ -308,7 +308,12 @@ layui.define(['layer', 'laytpl', 'form', 'element', 'upload', 'util'], function(
     }
     
   };
-
+  
+  //刷新图形验证码
+  $('body').on('click', '.validatecode', function(){
+    this.src = '/getcode?t='+ new Date().getTime();
+  });
+  
   //签到
   var tplSignin = ['{{# if(d.signed){ }}'
     ,'<button class="layui-btn layui-btn-disabled">今日已签到</button>'

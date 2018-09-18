@@ -1,6 +1,7 @@
 package com.jpscloud.portal.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +19,13 @@ import com.jpscloud.portal.web.constant.Constant;
 import com.jpscloud.portal.web.entity.Members;
 import com.jpscloud.portal.web.service.MembersService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
 @RestController
 @RequestMapping(value = "")
+@Api(value="用户controller",tags={"用户操作接口"})
 public class UserController {
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
@@ -88,11 +94,21 @@ public class UserController {
 	 * 
 	 * @return
 	 */
+	@ApiOperation(value="用户注册", notes="根据Member对象注册用户")
 	@PostMapping(value = "/user/register")
-	public ResponseService<Boolean> register(Members member,
-			@RequestParam(name = "vercode", required = false) String vercode, BindingResult bindingResult) {
+	public ResponseService<Boolean> register(@ApiParam(name="用户对象",value="用户注册相关字段",required=true) Members member,
+			@RequestParam(name = "vercode", required = false) String vercode, BindingResult bindingResult,HttpServletRequest request) {
 		ResponseService<Boolean> response = new ResponseService<Boolean>();
 		try {
+			// 存入会话session
+			HttpSession session = request.getSession(true);
+			String sessionVercode = (String) session.getAttribute(Constant.Register.VERIFYCODE_KEY);
+			if(!sessionVercode.equals(vercode.toLowerCase())){
+				response.setStatus(Constant.Status.VERIFY_ERROR);
+				response.setData(false);
+				response.setMessage("输入验证码不正确!");
+				return response;
+			}
 			if (bindingResult.hasErrors()) {
 				response.setStatus(Constant.Status.VERIFY_ERROR);
 				response.setData(false);
